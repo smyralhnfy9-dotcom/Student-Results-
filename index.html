@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="تطبيق بسيط لإدارة نتائج الطلاب وحساب لجنة الرأفة.">
+  <title>نظام إدارة النتائج</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">نظام إدارة النتائج</a>
+      <span class="navbar-text text-white-50 small">Student Results Management</span>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <header class="page-heading text-center mb-4">
+      <span class="eyebrow">قسم نظم ومعلومات</span>
+      <h1 class="fw-bold mt-2">إدارة نتائج الطلاب</h1>
+      <p class="text-secondary mb-0">أضف بيانات الطلاب، وتابع النتائج، واحسب درجات لجنة الرأفة بسهولة.</p>
+    </header>
+
+    <div class="row g-4">
+      <section class="col-lg-5">
+        <div class="panel h-100">
+          <div class="section-heading mb-4">
+            <span class="section-icon">＋</span>
+            <div>
+              <h2 class="h5 fw-bold mb-1">إضافة طالب جديد</h2>
+              <p class="small text-secondary mb-0">أدخل البيانات المطلوبة بدقة.</p>
+            </div>
+          </div>
+
+          <form id="studentForm" novalidate>
+            <div class="mb-3">
+              <label for="studentName" class="form-label">اسم الطالب</label>
+              <input type="text" class="form-control" id="studentName" placeholder="مثال: أحمد محمد" autocomplete="off">
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12">
+                <label for="grade1" class="form-label">درجة المادة الأولى</label>
+                <input type="number" class="form-control" id="grade1" placeholder="من 0 إلى 100" min="0" max="100">
+              </div>
+              <div class="col-12">
+                <label for="grade2" class="form-label">درجة المادة الثانية</label>
+                <input type="number" class="form-control" id="grade2" placeholder="من 0 إلى 100" min="0" max="100">
+              </div>
+              <div class="col-12">
+                <label for="grade3" class="form-label">درجة المادة الثالثة</label>
+                <input type="number" class="form-control" id="grade3" placeholder="من 0 إلى 100" min="0" max="100">
+              </div>
+              <div class="col-12">
+                <label for="attendance" class="form-label">نسبة الحضور (%)</label>
+                <input type="number" class="form-control" id="attendance" placeholder="من 0 إلى 100" min="0" max="100">
+              </div>
+            </div>
+
+            <div id="errorBox" class="alert alert-danger mt-3 d-none" role="alert" aria-live="polite"></div>
+            <div id="successBox" class="alert alert-success mt-3 d-none" role="status" aria-live="polite"></div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-3">إضافة طالب</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="col-lg-7">
+        <div class="panel mb-4">
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+            <div class="section-heading">
+              <span class="section-icon">▤</span>
+              <div>
+                <h2 class="h5 fw-bold mb-1">قائمة الطلاب</h2>
+                <p class="small text-secondary mb-0">الطلاب الذين تمت إضافتهم بنجاح.</p>
+              </div>
+            </div>
+            <span class="counter" id="studentCount">0 طالب</span>
+          </div>
+
+          <div id="studentsList" class="students-list">
+            <div class="empty-state">
+              <span>📋</span>
+              <p class="mb-0">لم تتم إضافة أي طالب حتى الآن.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel report-panel">
+          <div class="section-heading mb-3">
+            <span class="section-icon">★</span>
+            <div>
+              <h2 class="h5 fw-bold mb-1">تقرير لجنة الرأفة</h2>
+              <p class="small text-secondary mb-0">الطلاب الذين متوسط درجاتهم من 40 إلى أقل من 50.</p>
+            </div>
+          </div>
+          <button type="button" id="mercyBtn" class="btn btn-outline-primary w-100 mb-3">تفعيل لجنة الرأفة</button>
+          <div id="reportBox" class="report-content" aria-live="polite">
+            <div class="empty-state">
+              <span>📊</span>
+              <p class="mb-0">اضغط على زر تفعيل لجنة الرأفة لعرض التقرير.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="text-center text-secondary small mt-5">
+      تم تنفيذ المشروع باستخدام HTML وCSS وBootstrap وJavaScript.
+    </footer>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
